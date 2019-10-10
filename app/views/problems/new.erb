@@ -1,8 +1,16 @@
 <h1>Create a Problem to Solve:</h1>
 <br>
+
+<% if @problem && @problem.errors %>
+  <% @problem.errors.full_messages.each do |msg| %>
+    <h3 style="color: red;"><%= msg %></h3>
+  <% end %>
+<% end %>
+
+<br>
 <form action="/problems" method="post">
-  <p><label for="title">Title:</label><input type="text" name="title" placeholder="Enter The Title For Your Problem"></p>
-  <p><label for="description">Description:</label><textarea type="text" name="description" placeholder="What's Your Problem?"></textarea></p>
-  <p><label for="deadline">Deadline:</label><input type="text" name="deadline" placeholder="Get it done by"></p>
+  <p><label for="title">Title:</label><input type="text" name="title" id="title" value="<%= @problem ? @problem.title : "" %>" /></p>
+  <p><label for="description">Description:</label><textarea type="text" id="description" name="description"><%= @problem ? @problem.description : "" %></textarea></p>
+  <p><label for="deadline">Deadline:</label><input type="text" name="deadline" id="deadline" placeholder="Get it done by"></p>
   <input type="submit" id="submit" value="submit">
 </form>

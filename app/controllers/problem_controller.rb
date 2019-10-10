@@ -90,7 +90,7 @@ class ProblemController < ApplicationController
       Problem.destroy(params[:id])
       redirect "/problems"
     else
-      #flash[:err] = "You Cant do That!!!"
+      flash[:err] = "You Cant do That!!!"
       redirect "/problems"
     end
 
