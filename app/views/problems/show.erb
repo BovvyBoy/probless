@@ -6,3 +6,7 @@
 <p>Status: <%= @problem.completed ? "Done" : "Not Done" %></p>
 <a href="/problems">Back to Problems</a>
 <a href="/problems/<%= @problem.id %>/edit">Edit this Problem</a>
+<form action="/problems/<%= @problem.id %>" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <input type="submit" value="Delete">
+</form>

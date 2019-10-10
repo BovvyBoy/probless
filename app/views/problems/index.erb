@@ -1,5 +1,12 @@
-<h1>Your Current Problems:</h1>
-<br>
+
+<% if @user %>
+  <h1>Welcome <%= @user.name %></h1>
+  <br>
+  <h2>Here are your Current Probs</h2>
+<% else %>
+  <h3>Here Are Everyones Problems</h3>
+<% end %>
+
 <ol>
 <% @problems.each do |problem|%>
   <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
