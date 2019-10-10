@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20191008144918) do
     t.datetime "created"
     t.datetime "deadline"
     t.boolean  "completed",   default: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,5 +2,7 @@
 <h2><%= @problem.title %></h2>
 <p><%= @problem.description %></p>
 <p><%= @problem.created %></p>
-<p><%= @problem.deadline %></p>
-<p><%= @problem.completed ? "Done" : "Not Done" %></p>
+<p>Your Deadline: <%= @problem.deadline %></p>
+<p>Status: <%= @problem.completed ? "Done" : "Not Done" %></p>
+<a href="/problems">Back to Problems</a>
+<a href="/problems/<%= @problem.id %>/edit">Edit this Problem</a>

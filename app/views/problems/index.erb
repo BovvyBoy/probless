@@ -1,3 +1,10 @@
+<h1>Your Current Problems:</h1>
+<br>
+<ol>
 <% @problems.each do |problem|%>
-  <%= problem.title %>
+  <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
 <% end %>
+</ol>
+<br>
+<br>
+<p><a href="/problems/new">Add A Problem</a></p>

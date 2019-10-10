@@ -1,0 +1,9 @@
+<h1>Edit your Problem</h1><br>
+<h3>Editing Your Problem DOES NOT Solve it!!!</h3><br>
+<form action="/problems/<%= @problem.id %> " method="PATCH">
+  <p><label for="title">Title:</label><input type="text" name="title" value="<%= @problem.title %>"></p>
+  <p><label for="description">Description:</label><input type="text" name="description" value="<%= @problem.description %>"></p>
+  <p><label for="deadline">Deadline:</label><input type="text" name="deadline" value="<%= @problem.deadline %>"></p>
+  <p>Completed: <input type="checkbox" name="completed"></p>
+  <input type="submit" id="submit" value="submit">
+</form>

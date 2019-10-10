@@ -6,6 +6,7 @@ class CreateProblems < ActiveRecord::Migration
       t.datetime :created
       t.datetime :deadline
       t.boolean :completed, default: false
+      t.integer :user_id
 
       t.timestamps
     end
