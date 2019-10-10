@@ -1,3 +1,6 @@
+<% if flash.has?(:err) %>
+  <h3 style="color: red;"><%= flash[:err] %></h3>
+<% end %>
 
 <% if @user %>
   <h1>Welcome <%= @user.name %></h1>
@@ -12,6 +15,3 @@
   <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
 <% end %>
 </ol>
-<br>
-<br>
-<p><a href="/problems/new">Add A Problem</a></p>

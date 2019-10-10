@@ -17,7 +17,7 @@ class ProblemController < ApplicationController
   get "problems/all" do
     if logged_in?
       @problems = Problem.all
-      
+
       erb :"problems/index"
     else
       redirect "/login"
@@ -98,6 +98,3 @@ class ProblemController < ApplicationController
 
 
 end
-#<% if flash.has?(:err) %>
-#  <h3 style="color: red;"><% flash[:err] %></h3>
-#<% end %>
