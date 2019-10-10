@@ -14,7 +14,7 @@ class ProblemController < ApplicationController
   end
 
 #show all
-  get "problems/all" do
+  get "/problems/all" do
     if logged_in?
       @problems = Problem.all
 
@@ -55,9 +55,15 @@ class ProblemController < ApplicationController
 
 #edit
   get "/problems/:id/edit" do
-    @problem = Problem.find_by_id(params[:id])
-
-    erb :"problems/edit"
+    user = Problem.find_by_id(params[:id]).user
+    if user.id == current_user.id
+      @users = User.all
+      @problem = Problem.find_by_id(params[:id])
+      erb :"problems/edit"
+    else
+      #flash[:err] = "Cant Do That Buddy, It's Not Yours!!!"
+      redirect "/problems"
+    end
   end
 
   patch "/problems/:id" do
@@ -90,7 +96,7 @@ class ProblemController < ApplicationController
       Problem.destroy(params[:id])
       redirect "/problems"
     else
-      flash[:err] = "You Cant do That!!!"
+      #flash[:err] = "You Cant do That!!!"
       redirect "/problems"
     end
 

@@ -3,7 +3,7 @@
 
 <% if @problem && @problem.errors %>
   <% @problem.errors.full_messages.each do |msg| %>
-    <h3 style="color: red;"><%= msg %></h3>
+    <p style="color: red;"><%= msg %></p>
   <% end %>
 <% end %>
 
