@@ -1,7 +1,7 @@
-<% if @user %>
-  <h1>Your Problem</h1>
+<% if @user == @problem.user %>
+  <h1>Your Prob</h1>
 <% else %>
-  <h1>Prob</h1>
+  <h1>Their Prob</h1>
 <% end %>
 
 
