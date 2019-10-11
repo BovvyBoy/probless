@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191011121811) do
+ActiveRecord::Schema.define(version: 20191011175236) do
 
   create_table "problems", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "deadline"
-    t.boolean  "completed",   default: false
+    t.string   "completed",   default: "f"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

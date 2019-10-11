@@ -1,12 +1,24 @@
-<h1>Your Problem</h1>
+<% if @user %>
+  <h1>Your Problem</h1>
+<% else %>
+  <h1>Prob</h1>
+<% end %>
+
+
 <h2><%= @problem.title %></h2>
+<br>
 <p><%= @problem.description %></p>
-<p><%= @problem.created_at %></p>
+<br>
+<br>
+<p>Date and Time Created: <%= @problem.created_at %></p>
 <p>Your Deadline: <%= @problem.deadline %></p>
-<p>Status: <%= @problem.completed ? "Done" : "Not Done" %></p>
-<a href="/problems">Back to Probs</a>
-<a href="/problems/<%= @problem.id %>/edit">Edit this Problem</a>
+<p>Status: <%= @problem.completed == "on" ? "Done" : "Not Done" %></p>
+<br>
+<a class="btn btn-info" href="/problems">Back to Probs</a>
+<a class="btn btn-info" href="/problems/<%= @problem.id %>/edit">Edit this Problem</a>
+<br>
+<br>
 <form action="/problems/<%= @problem.id %>" method="post">
   <input type="hidden" name="_method" value="delete" />
-  <input type="submit" value="Delete">
+  <input class="btn btn-info" type="submit" value="Delete">
 </form>

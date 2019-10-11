@@ -67,8 +67,7 @@
   }
 
   img {
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 100px;
   }
 
   nav {
@@ -85,15 +84,20 @@
     margin-top: 40px;
     margin-bottom: 40px;
     line-height: 40px;
+    text-align: center;
   }
 
   .main {
     overflow: hidden;
   }
 
+  .welcome-decision {
+    text-align: center;
+  }
+
   .content {
     float: left;
-    width: 60%; /* 480px / 800px */
+    width: 100%; /* 480px / 800px */
   }
 
   .sidebar {

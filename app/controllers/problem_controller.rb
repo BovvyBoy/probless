@@ -6,8 +6,8 @@ class ProblemController < ApplicationController
   get "/problems" do
     if logged_in?
       @user = current_user
-      @current_problems = @user.problems.where(completed: false)
-      @solved_problems = @user.problems.where(completed: true)
+      @current_problems = @user.problems.where(completed: "f")
+      @solved_problems = @user.problems.where(completed: "on")
 
       erb :"problems/index"
     else
@@ -19,7 +19,6 @@ class ProblemController < ApplicationController
   get "/problems/all" do
     if logged_in?
       @problems = Problem.all.where(completed: false)
-
       erb :"problems/index"
     else
       redirect "/login"
@@ -47,7 +46,7 @@ class ProblemController < ApplicationController
 #show
   get "/problems/:id" do
     @problem = Problem.find_by_id(params[:id])
-
+    @user = current_user
     if @problem
       erb :"problems/show"
     else
@@ -70,8 +69,8 @@ class ProblemController < ApplicationController
 
   patch "/problems/:id" do
     @problem = Problem.find_by_id(params[:id])
-
-    if @problem.update(title: params[:title], description: params[:description], deadline: params[:deadline])
+    #params.delete("_method")
+    if @problem.update(title: params[:title], description: params[:description], deadline: params[:deadline], completed: params[:completed])
       redirect "problems/#{@problem.id}"
     else
       redirect "problems/#{@problem.id}/edit"
