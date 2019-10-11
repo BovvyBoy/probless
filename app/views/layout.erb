@@ -18,14 +18,14 @@
       <nav>
         <ul>
           <% if logged_in? %>
-            <li><a href="/problems">My Probs</a></li>
+            <li><a href="/problems" style="margin-left: auto;">My Probs</a></li>
             <li><a href="/problems/all">Everyones Probs</a></li>
             <li><a href="/problems/new">Share A Prob</a></li>
-            <li><a href="/logout">Log Out</a></li>
+            <li style="float: right;"><a href="/logout">Log Out</a></li>
 
           <% else %>
             <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/login">Log In</a></li>
+            <li><a href="/login" style="float: right;">Log In</a></li>
           <% end %>
         </ul>
       </nav>
@@ -34,6 +34,15 @@
 
       <footer class="branding">
         <small>&copy; 2019 <strong>Probless</strong></small>
+        <div class="sidebar">
+          <h3>Environment</h3>
+          <ul>
+            <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
+            <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
+            <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
+            <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
+          </ul>
+        </div>
       </footer>
     </div>
 

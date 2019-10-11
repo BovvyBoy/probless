@@ -6,7 +6,9 @@ class ProblemController < ApplicationController
   get "/problems" do
     if logged_in?
       @user = current_user
-      @problems = @user.problems
+      @current_problems = @user.problems.where(completed: false)
+      @solved_problems = @user.problems.where(completed: true)
+
       erb :"problems/index"
     else
       redirect "/signup"
@@ -16,7 +18,7 @@ class ProblemController < ApplicationController
 #show all
   get "/problems/all" do
     if logged_in?
-      @problems = Problem.all
+      @problems = Problem.all.where(completed: false)
 
       erb :"problems/index"
     else

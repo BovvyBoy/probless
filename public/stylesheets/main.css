@@ -42,11 +42,14 @@
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
+    margin-top: 70px;
+    clear: both;
   }
 
   h3 {
     font-size: 18px;
     line-height: 36px;
+    clear: both;
   }
 
   p {
@@ -55,6 +58,12 @@
 
   a {
     text-decoration: none;
+  }
+
+  ol li {
+    border: solid;
+    border-style: ridge;
+    padding: 15px;
   }
 
   img {
@@ -68,8 +77,14 @@
 
   nav a {
     float: left;
-    margin-left: 10px;
+    margin: 20px;
 
+  }
+
+  .content p {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    line-height: 40px;
   }
 
   .main {
@@ -84,8 +99,8 @@
   .sidebar {
     background: #eee;
     border: 1px solid #ccc;
-    float: right;
     padding: 2.08333333333%; /* 5px / 240px */
+    margin-top: 70px;
     width: 30%; /* 240px / 800px */
   }
 

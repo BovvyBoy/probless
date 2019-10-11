@@ -1,10 +1,10 @@
 <h1>Your Problem</h1>
 <h2><%= @problem.title %></h2>
 <p><%= @problem.description %></p>
-<p><%= @problem.created %></p>
+<p><%= @problem.created_at %></p>
 <p>Your Deadline: <%= @problem.deadline %></p>
 <p>Status: <%= @problem.completed ? "Done" : "Not Done" %></p>
-<a href="/problems">Back to Problems</a>
+<a href="/problems">Back to Probs</a>
 <a href="/problems/<%= @problem.id %>/edit">Edit this Problem</a>
 <form action="/problems/<%= @problem.id %>" method="post">
   <input type="hidden" name="_method" value="delete" />

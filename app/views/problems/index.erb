@@ -4,18 +4,32 @@
   <h1>Welcome <%= @user.name %></h1>
   <br>
   <h2>Here are your Current Probs</h2>
-<% else %>
-  <h2>Here Are Everyones Problems</h2>
-<% end %>
-
-<ol>
-<% @problems.each do |problem|%>
-  <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
-<% end %>
-</ol>
-
-<% if @user %>
+  <br>
+  <br>
+  <ol>
+  <% @current_problems.each do |problem|%>
+    <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
+  <% end %>
+  </ol>
+  <br>
+  <br>
   <h2>Here are your solved Probs</h2>
+  <br>
+  <br>
+  <ol>
+  <% @solved_problems.each do |problem|%>
+    <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
+  <% end %>
+  </ol>
+  <br>
+  <br>
 <% else %>
   <h2>Here Are Everyones Problems</h2>
+  <br>
+  <br>
+  <ol>
+  <% @problems.each do |problem|%>
+    <li><a href="/problems/<%= problem.id %>"><%= problem.title %></a></li><br>
+  <% end %>
+  </ol>
 <% end %>
