@@ -10,7 +10,7 @@
 <br>
 <form action="/problems" method="post">
   <p><label for="title">Title:</label><input type="text" name="title" id="title" value="<%= @problem ? @problem.title : "" %>" /></p>
-  <p><label for="description">Description:</label><textarea type="text" id="description" name="description"><%= @problem ? @problem.description : "" %> /></textarea></p>
+  <p><label for="description">Description:</label><textarea type="text" id="description" name="description"><%= @problem ? @problem.description : "" %></textarea></p>
   <p><label for="deadline">Deadline:</label><input type="text" name="deadline" id="deadline" placeholder="yyyy/mm/dd"></p>
   <input class="btn btn-info" type="submit" id="submit" value="submit">
 </form>
