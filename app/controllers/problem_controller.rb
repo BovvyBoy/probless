@@ -4,30 +4,24 @@ class ProblemController < ApplicationController
 
 #index
   get "/problems" do
-    if logged_in?
-      @user = current_user
-      @current_problems = @user.problems.where(completed: "f")
-      @solved_problems = @user.problems.where(completed: "on")
+    authenticate
+    @user = current_user
+    @current_problems = @user.problems.where(completed: "f")
+    @solved_problems = @user.problems.where(completed: "on")
 
-      erb :"problems/index"
-    else
-      redirect "/signup"
-    end
+    erb :"problems/index"
   end
 
 #show all
   get "/problems/all" do
-    if logged_in?
-      @problems = Problem.all.where(completed: false)
-      erb :"problems/index"
-    else
-      redirect "/login"
-    end
+    authenticate
+    @problems = Problem.all.where(completed: false)
+    erb :"problems/index"
   end
 
 #new
   get "/problems/new" do
-
+    authenticate
     erb :"problems/new"
   end
 
@@ -57,14 +51,15 @@ class ProblemController < ApplicationController
 #edit
   get "/problems/:id/edit" do
     user = Problem.find_by_id(params[:id]).user
-    if user.id == current_user.id
-      @users = User.all
-      @problem = Problem.find_by_id(params[:id])
-      erb :"problems/edit"
-    else
-      #flash[:err] = "Cant Do That Buddy, It's Not Yours!!!"
-      redirect "/problems"
-    end
+    #if user.id == current_user.id
+    @users = User.all
+    @problem = Problem.find_by_id(params[:id])
+    authorise(@problem)
+    erb :"problems/edit"
+    # else
+    #   #flash[:err] = "Cant Do That Buddy, It's Not Yours!!!"
+    #   redirect "/problems"
+    # end
   end
 
   patch "/problems/:id" do
@@ -91,15 +86,17 @@ class ProblemController < ApplicationController
 
 #delete
   delete "/problems/:id" do
-    problem_creator = Problem.find_by_id(params[:id]).user
+    #problem_creator = Problem.find_by_id(params[:id]).user
     #binding.pry
-    if problem_creator.id == current_user.id
-      Problem.destroy(params[:id])
-      redirect "/problems"
-    else
-      #flash[:err] = "You Cant do That!!!"
-      redirect "/problems"
-    end
+    #if problem_creator.id == current_user.id
+    @problem = Problem.find_by_id(params[:id])
+    authorise(@problem)
+    Problem.destroy(params[:id])
+    redirect "/problems"
+    # else
+    #   #flash[:err] = "You Cant do That!!!"
+    #   redirect "/problems"
+    # end
 
   end
 
