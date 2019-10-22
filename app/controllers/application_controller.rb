@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
 
     def authorise(problem)
       if problem.user_id != current_user
-        redirect "/problems/#{problem.id}"
+        redirect "/problems"
       end
     end
 
