@@ -39,6 +39,7 @@ class ProblemController < ApplicationController
 
 #show
   get "/problems/:id" do
+    authenticate
     @problem = Problem.find_by_id(params[:id])
     @user = current_user
     if @problem

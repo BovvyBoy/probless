@@ -28,13 +28,13 @@ class ApplicationController < Sinatra::Base
 
     def authenticate
       if !logged_in?
-        redirect '/login'
+        erb :'/login'
       end
     end
 
     def authorise(problem)
       if problem.user_id != current_user
-        redirect '/index'
+        redirect '/'
       end
     end
 
